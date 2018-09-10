@@ -27,6 +27,14 @@
             return this;
         }
 
+        public Contract IsGreaterThan(long val, decimal comparer, string property, string message)
+        {
+            if (val <= (float)comparer)
+                AddNotification(property, message);
+
+            return this;
+        }
+
         public Contract IsGreaterThan(int val, decimal comparer, string property, string message)
         {
             if (val <= comparer)
@@ -54,6 +62,14 @@
         }
 
         public Contract IsGreaterOrEqualsThan(float val, decimal comparer, string property, string message)
+        {
+            if (val < (float)comparer)
+                AddNotification(property, message);
+
+            return this;
+        }
+
+        public Contract IsGreaterOrEqualsThan(long val, decimal comparer, string property, string message)
         {
             if (val < (float)comparer)
                 AddNotification(property, message);
@@ -95,6 +111,14 @@
             return this;
         }
 
+        public Contract IsLowerThan(long val, decimal comparer, string property, string message)
+        {
+            if (val >= (float)comparer)
+                AddNotification(property, message);
+
+            return this;
+        }
+
         public Contract IsLowerThan(int val, decimal comparer, string property, string message)
         {
             if (val >= comparer)
@@ -122,6 +146,14 @@
         }
 
         public Contract IsLowerOrEqualsThan(float val, decimal comparer, string property, string message)
+        {
+            if (val > (float)comparer)
+                AddNotification(property, message);
+
+            return this;
+        }
+
+        public Contract IsLowerOrEqualsThan(long val, decimal comparer, string property, string message)
         {
             if (val > (float)comparer)
                 AddNotification(property, message);
@@ -163,6 +195,14 @@
             return this;
         }
 
+        public Contract AreEquals(long val, decimal comparer, string property, string message)
+        {
+            if (val != (float)comparer)
+                AddNotification(property, message);
+
+            return this;
+        }
+
         public Contract AreEquals(int val, decimal comparer, string property, string message)
         {
             if (val != comparer)
@@ -197,6 +237,14 @@
             return this;
         }
 
+        public Contract AreNotEquals(long val, decimal comparer, string property, string message)
+        {
+            if (val == (float)comparer)
+                AddNotification(property, message);
+
+            return this;
+        }
+
         public Contract AreNotEquals(int val, decimal comparer, string property, string message)
         {
             if (val == comparer)
@@ -215,5 +263,14 @@
             return this;
         }      
         #endregion
+
+        public Contract IsNullOrNullable(decimal? val, string property, string message)
+        {
+            if (val== null || !val.HasValue)
+                AddNotification(property, message);
+
+            return this;
+        }
+
     }
 }
